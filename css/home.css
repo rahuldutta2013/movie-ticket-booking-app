@@ -1,0 +1,15 @@
+.website-logo{
+    height: 5%;
+    width: 16%;
+    padding: 0;
+    margin-top: 9px;
+}
+.movie-list td{
+    padding: 3% !important;
+    vertical-align: middle !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+.movie-name{
+    font-weight: bold;
+}

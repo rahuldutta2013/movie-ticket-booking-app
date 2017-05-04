@@ -1,0 +1,47 @@
+.table a {
+  text-decoration: none;
+  width: 21px;
+  height: 21px;
+  border-radius: 4px;
+  padding: 6px;
+  line-height: 21px;
+  cursor: default;
+}
+
+.table a:hover,
+.table a:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table a.selected {
+  background: green;
+  color: white;
+  border: 0;
+}
+
+.table a.available {
+  color: green;
+  border: 1px solid green;
+  border-radius: 4px;
+}
+
+.table a.blocked {
+  color: grey;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.table a.available:hover {
+  color: white;
+  background: green;
+}
+
+.table a.blocked,
+.table a.blocked:hover {
+  background: #eaeaea;
+  color: #aaa;
+  box-shadow: 0;
+  cursor: default;
+  border: 0;
+}

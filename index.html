@@ -1,0 +1,47 @@
+<html>
+
+<head>
+    <title>Cine World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/selectSeat.css">
+    <style>
+       
+    </style>
+
+</head>
+
+<body ng-app="myApp">
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <img src='image/MAW_icon-vector-blue_45_video_camera_312x214.png' class="navbar-brand website-logo">
+                   <p class="navbar-brand">Cine World</p>
+                </div>
+               
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+            
+        </nav>
+    </header>
+<div ui-view></div>
+    <script src='js/app.js'></script>
+    
+    
+    <script src='js/controllers/fetchMovies_controller.js'></script>
+    <script src='js/controllers/selectSeat_controller.js'></script>
+    <script src='js/services/fetchData_service.js'></script>
+    <script src='js/services/dbManager_service.js'></script>
+    
+</body>
+
+</html>
