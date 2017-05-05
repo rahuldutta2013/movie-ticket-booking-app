@@ -20,12 +20,14 @@ mainApp.service('changeSeatStatus_service', function () {
 });
 
 mainApp.service('getMovieName_service', function () {
-    this.movieName;
-    this.setName = function (movieName) {
-        this.movieName = movieName;
+    this.movieObj = {};
+    this.setName = function (movieName,price,showtime) {
+        this.movieObj.movieName = movieName;
+        this.movieObj.price = price;
+        this.movieObj.showTime = showtime;
     }
     this.getName = function () {
-        return this.movieName;
+        return this.movieObj;
     }
 });
 
@@ -53,5 +55,16 @@ mainApp.service('loadSeatView_service', function () {
             this.rows = obj;
         }
         return this.rows;
+    }
+});
+
+mainApp.service('getTicketObj_service', function () {
+    this.ticketObj = {};
+    this.setTicketObj = function(noOfTicket,totPrice){
+        this.ticketObj.noOfTicket = noOfTicket;
+        this.ticketObj.totPrice = totPrice;
+    }
+    this.getTicketObj = function(){
+        return this.ticketObj;
     }
 });

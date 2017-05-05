@@ -11,17 +11,17 @@
     },
     {
       "movie": "Sarkar 3",
-      "cost": "100",
+      "cost": "150",
       "showTime": "03:00PM"
     },
     {
       "movie": "F8:The Fate Of The Furious",
-      "cost": "100",
+      "cost": "200",
       "showTime": "06:00PM"
     },
     {
       "movie": "Begum Jaan",
-      "cost": "100",
+      "cost": "80",
       "showTime": "09:00PM"
     }
   ]

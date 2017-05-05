@@ -1,44 +1,52 @@
-mainApp.controller('selectSeat_ctrl', ['$scope','dbManager_service', 'changeSeatStatus_service', 'getMovieName_service','loadSeatView_service', 
-function ($scope,dbManager_service, changeSeatStatus_service, getMovieName_service,loadSeatView_service) {
-    
+mainApp.controller('selectSeat_ctrl', ['$scope', 'dbManager_service', 'changeSeatStatus_service', 'getMovieName_service',
+    'loadSeatView_service', 'getTicketObj_service',
+    function ($scope, dbManager_service, changeSeatStatus_service, getMovieName_service, loadSeatView_service,
+        getTicketObj_service) {
 
 
-    var movieName = getMovieName_service.getName();
+        var movieObj = getMovieName_service.getName();
+        var movieName = movieObj.movieName;
+        console.log(movieObj);
 
 
+        $scope.price = movieObj.price;
+        $scope.showTime = movieObj.showTime;
+        $scope.movieName = movieName;
+        $scope.quantities = [1, 2];
 
-    console.log('myMovie:' + movieName);
-    $scope.movieName = movieName;
-    $scope.quantities = [1, 2];
-    
-    $scope.isDisabled = false;
-    $scope.rows = loadSeatView_service.findAvailSeat(movieName);
-    console.log($scope.rows);
-    
+        $scope.isDisabled = false;
+        $scope.rows = loadSeatView_service.findAvailSeat(movieName);
+        // console.log($scope.rows);
 
-    $scope.selectedSeatCount = 0;
-    $scope.clickSeat = function (event, seat) {
-        if (!seat.seat && !$scope.isDisabled) {
-            if (seat.check) {
-                seat.check = false;
-                $scope.selectedSeatCount--;
-                console.log($scope.rows);
-            } else if ($scope.selectedSeatCount < $scope.selectedVal) {
-                seat.check = true;
-                $scope.selectedSeatCount++;
-                console.log($scope.rows);
+
+        $scope.selectedSeatCount = 0;
+        $scope.clickSeat = function (event, seat) {
+            if (!seat.seat && !$scope.isDisabled) {
+                if (seat.check) {
+                    seat.check = false;
+                    $scope.selectedSeatCount--;
+                    console.log($scope.rows);
+                } else if ($scope.selectedSeatCount < $scope.selectedVal) {
+                    seat.check = true;
+                    $scope.selectedSeatCount++;
+                    console.log($scope.rows);
+                }
             }
         }
-    }
+       
+            var totPrice = $scope.selectedVal * $scope.price;
+            getTicketObj_service.setTicketObj($scope.selectedVal, totPrice);
+        
 
-    $scope.confirmSeat = function () {
-        var updatedSeats = changeSeatStatus_service.makeDisable($scope.rows);
-        updatedSeats.movieName = movieName;
-        console.log(updatedSeats);
-        $scope.newSeatStatus = dbManager_service.storeDataInLocalStorage(updatedSeats, movieName);
-        console.log($scope.newSeatStatus);
-    }
 
-}]);
+        $scope.confirmSeat = function () {
+            var updatedSeats = changeSeatStatus_service.makeDisable($scope.rows);
+            updatedSeats.movieName = movieName;
+            console.log(updatedSeats);
+            $scope.newSeatStatus = dbManager_service.storeDataInLocalStorage(updatedSeats, movieName);
+            console.log($scope.newSeatStatus);
+        }
+
+    }]);
 
 

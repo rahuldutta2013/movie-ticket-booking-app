@@ -1,5 +1,6 @@
 var mainApp = angular.module("myApp", ["ui.router"]);
 mainApp.config(function ($stateProvider, $urlRouterProvider) {
+    
     $stateProvider.state("homePage", {
         name: 'home',
         url: '/home',
@@ -12,5 +13,20 @@ mainApp.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'templates/bookTicket.html',
         controller: 'selectSeat_ctrl'
     });
+
+
+ $stateProvider.state('selectSeat.payment', {
+      
+      views: {
+        "selectSeat.payment": {
+          name: 'payment',
+        //   url: '/selectSeat/payment',  
+          templateUrl: 'templates/makePayment.html',
+          controller: 'previewOrderSummaryCtrl'
+        }
+      }
+    })
+
+
     $urlRouterProvider.otherwise("/home");
 });
