@@ -1,0 +1,56 @@
+<div>
+    <form name="myForm" novalidate>
+        <p>Contact Details</p>
+        <p>Phone:
+            <input type="text" name="phone" ng-model="phone" required>
+            <span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+<span ng-show="myForm.phone.$error.required">Phone Number is required.</span>
+            </span>
+        </p>
+        <p>Email:
+            <input type="email" name="email" ng-model="email" required>
+            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+<span ng-show="myForm.email.$error.required">Email is required.</span>
+            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+            </span>
+        </p>
+
+        <p>Payment</p>
+
+        <p>Card Number:
+            <input type="text" name="cardNumber" ng-model="cardNumber" ng-pattern="/^[0-9]{4}$/" required>
+            <span style="color:red" ng-show="myForm.cardNumber.$dirty && myForm.cardNumber.$invalid">
+                <span ng-show="myForm.cardNumber.$error.required">Card-Number Number is required.</span>
+                <span ng-show="myForm.cardNumber.$error.pattern">Invalid card number</span>
+            </span>
+        </p>
+
+        <p>Expiry:
+            <input type="text" name="ExpiryMonth" ng-model="month" ng-pattern="/^(1[0-2]|[1-9])$/" required>
+
+            <span style="color:red" ng-show="myForm.ExpiryMonth.$dirty && myForm.ExpiryMonth.$invalid">
+                Expiry Date is required.</span>
+             <span style="color:red" ng-show="myForm.ExpiryMonth.$error.pattern">Valid year Number is required.</span>
+
+            <input type="text" name="ExpiryYear" ng-model="year" ng-pattern="/^(1[0-2]|[1-9])$/" required>
+
+            <span style="color:red" ng-show="myForm.ExpiryYear.$dirty && myForm.ExpiryYear.$invalid">required</span>
+            <span ng-show="myForm.ExpiryYear.$error.pattern || myForm.ExpiryYear.$error.pattern"> 
+                Valid Card-Number Number is required.</span>
+        
+        </p>
+
+        <p>Cvv:
+            <input type="text" name="cvv" ng-model="cvv" required>
+            <span style="color:red" ng-show="myForm.cvv.$dirty && myForm.cvv.$invalid">
+<span ng-show="myForm.cvv.$error.required">Cvv Number is required.</span>
+            </span>
+        </p>
+
+        <p>   
+            <a ui-sref='confirmBooking' ng-hide="myForm.$invalid">Confirm Booking</a> 
+<!--<input type="submit" ng-disabled="myForm.$invalid">-->
+        </p>
+
+    </form>
+</div>

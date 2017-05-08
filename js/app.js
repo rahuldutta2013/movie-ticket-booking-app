@@ -14,14 +14,28 @@ mainApp.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'selectSeat_ctrl'
     });
 
+    $stateProvider.state("payment", {
+        name: 'payment',
+        url: '/home/payment',
+        templateUrl: 'templates/payment.html',
+        controller: 'paymentValidateCtrl'
+    });
 
- $stateProvider.state('selectSeat.payment', {
+     $stateProvider.state("confirmBooking", {
+        name: 'confirmBooking',
+        url: '/home/confirmBooking',
+        templateUrl: 'templates/confirmBooking.html',
+        controller: 'confirmBookingCtrl'
+    });
+
+
+ $stateProvider.state('selectSeat.prevSummary', {
       
       views: {
-        "selectSeat.payment": {
-          name: 'payment',
+        "selectSeat.prevSummary": {
+          name: 'prevSummary',
         //   url: '/selectSeat/payment',  
-          templateUrl: 'templates/makePayment.html',
+          templateUrl: 'templates/previewSummary.html',
           controller: 'previewOrderSummaryCtrl'
         }
       }

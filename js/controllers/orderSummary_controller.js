@@ -3,5 +3,5 @@ mainApp.controller('previewOrderSummaryCtrl',
         'ngInject';
         $scope.movieObj = getMovieName_service.getName();
         $scope.ticketObj = getTicketObj_service.getTicketObj();
-        console.log($scope.ticketObj);
+        // console.log($scope.ticketObj);
     });

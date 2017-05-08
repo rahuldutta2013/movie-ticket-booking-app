@@ -4,8 +4,9 @@
         <h2>ORDER SUMMARY</h2>
         <h3>Cine World</h3>
         <h4>{{movieObj.movieName}}</h4>
-        <p>Tickets: <b>2</b></p>
+        <p>Tickets: <b>{{ticketObj.noOfTicket}}</b></p>
         <p>Show Time: <b>{{movieObj.showTime}}</b></p>
-        <article><span>Amount Payable:</span><span><b>Rs.260</b></span></article>
+        <article><span>Amount Payable:</span><span><b>{{ticketObj.totPrice|currency}}</b></span></article>
+        <div><a ui-sref='selectSeat'>Cancel</a></div><div><a ui-sref="payment">Proceed</a></div>
     </div>
 </div>

@@ -31,10 +31,10 @@
         <p>whether the selection of seats should be disabled or not = {{isDisabled}}</p>
         <p ng-show='selectedVal'>Seats selected: {{selectedSeatCount}}</p>
       </div>
-      <button class="btn btn-success" ng-click="confirmSeat()">Confirm Booking</button>
+      <!--<button class="btn btn-success" ng-click="confirmSeat()">Confirm Booking</button>-->
 
-      <a ui-sref='.payment'>payment</a>
-      <div ui-view="selectSeat.payment"></div>
+      <a ui-sref='.prevSummary'>Proceed</a>
+      <div ui-view="selectSeat.prevSummary"></div>
 
     </div>
   </div>
