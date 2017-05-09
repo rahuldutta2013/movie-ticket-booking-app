@@ -1,28 +1,32 @@
 {
   "Theatre": {
     "theatreName": "Cine World",
-    "seats": "50"
+    "seats": "50"  
   },
   "movies": [
     {
       "movie": "Bahubali 2,The Conclusion",
       "cost": "100",
-      "showTime": "12:00PM"
+      "showTime": "12:00PM",
+      "poster":"image/Bahubali-2-Posters.jpg"
     },
     {
       "movie": "Sarkar 3",
       "cost": "150",
-      "showTime": "03:00PM"
+      "showTime": "03:00PM",
+      "poster":"image/309.jpg"
     },
     {
       "movie": "F8:The Fate Of The Furious",
       "cost": "200",
-      "showTime": "06:00PM"
+      "showTime": "06:00PM",
+      "poster":"image/1502987922_fast.jpg"
     },
     {
       "movie": "Begum Jaan",
       "cost": "80",
-      "showTime": "09:00PM"
+      "showTime": "09:00PM",
+      "poster":"image/Begum_Jaan.jpg"
     }
   ]
 }
