@@ -1,22 +1,20 @@
-mainApp.controller('selectSeat_ctrl', ['$scope','dbManager_service', 'changeSeatStatus_service', 'getMovieName_service',
-    'loadSeatView_service', 'getTicketObj_service',
-    function ($scope,dbManager_service, changeSeatStatus_service, getMovieName_service, loadSeatView_service,
-        getTicketObj_service) {
+mainApp.controller('selectSeat_ctrl', ['$scope', 'changeSeatStatus_service',
+    'getTicketObj_service', 'seatData', 'movieDetail',
+    function ($scope, changeSeatStatus_service,
+        getTicketObj_service, seatData, movieDetail) {
 
-        var movieObj = getMovieName_service.getName();
-        var movieName = movieObj.movieName;
-        // console.log(movieObj);
+        var movieObj = movieDetail;
+        var movieName = movieObj.movie;
 
-        $scope.price = movieObj.price;
+        $scope.price = movieObj.cost;
         $scope.showTime = movieObj.showTime;
         $scope.movieName = movieName;
         $scope.quantities = [1, 2];
 
         $scope.isDisabled = false;
-        $scope.rows = loadSeatView_service.findAvailSeat(movieName);
-        // console.log($scope.rows);
+        $scope.rows = seatData;
 
-
+        
         $scope.selectedSeatCount = 0;
         $scope.clickSeat = function (event, seat) {
             if (!seat.seat && !$scope.isDisabled) {
@@ -30,8 +28,8 @@ mainApp.controller('selectSeat_ctrl', ['$scope','dbManager_service', 'changeSeat
                     // console.log($scope.rows);
 
                     var totPrice = $scope.selectedVal * $scope.price;
-                    getTicketObj_service.setTicketObj($scope.selectedVal, totPrice,$scope.rows);
-                    if($scope.selectedSeatCount == $scope.selectedVal){
+                    getTicketObj_service.setTicketObj($scope.selectedVal, totPrice, $scope.rows);
+                    if ($scope.selectedSeatCount == $scope.selectedVal) {
                         $scope.proceed = true;
                         console.log('hello');
                     }
@@ -39,13 +37,25 @@ mainApp.controller('selectSeat_ctrl', ['$scope','dbManager_service', 'changeSeat
             }
         }
 
-       $scope.changeQty = function(){
-          
-           $scope.rows = loadSeatView_service.findAvailSeat(movieName);
-           $scope.selectedSeatCount = 0;
-           $scope.proceed = false;
-       }
-        
+        $scope.changeQty = function () {
+            $scope.rows = $scope.reloadSeat(seatData);
+            $scope.selectedSeatCount = 0;
+            $scope.proceed = false;
+        }
+
+
+        $scope.reloadSeat = function (seatData) {
+            for (var i = 0; i < seatData.length; i++) {
+                for (var j = 0; j < seatData[i].length; j++) {
+                    if (seatData[i][j].check === true && seatData[i][j].seat === false) {
+                        seatData[i][j].check = false;
+                    }
+                }
+            }
+            return seatData;
+        }
+
+
 
     }]);
 

@@ -1,8 +1,8 @@
-<div ng-controller="fetchMoviesCtrl" class="container">
+<div class="container">
     <table class="table movie-list">
         <tr ng-repeat="movie in apiData.movies">
             <td><img ng-src={{movie.poster}} height="70px" width="70px"/></td>
-            <td class="movie-name"><a ui-sref="selectSeat" ng-click="getMovieName($event)">{{ movie.movie }}</a></td>
+            <td class="movie-name"><a ui-sref="selectSeat({movie:movie.movie})" ng-click="getMovieName($event)">{{ movie.movie }}</a></td>
             <td class="movie-name">{{ movie.cost|currency }}</td>
             <td><button class="btn btn-primary">{{ movie.showTime }}</button></td>
         </tr>

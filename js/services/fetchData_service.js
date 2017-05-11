@@ -1,4 +1,4 @@
-mainApp.service("dataService", ['$http', '$q', function ($http, $q) {
+mainApp.factory("dataService", ['$http', '$q', function ($http, $q) {
     return {
         getData: function () {
             var deferred = $q.defer();
