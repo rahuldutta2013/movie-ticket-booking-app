@@ -4,8 +4,8 @@
         <h3>Cine World</h3>
         <h4>{{movieObj.movieName}}</h4>
         <p>Tickets: <b>{{ticketData.noOfTicket}}</b></p>
-        <p>Show Time: <b>{{ticketData.showTime}}</b></p>
+        <p>Show Time: <b>{{movieObj.showTime}}</b></p>
         <article><span>Amount Payable:</span><span><b>{{ticketData.totPrice|currency}}</b></span></article>
-        <div><a ui-sref='homePage'>Home</a></div>
+        <div><a ui-sref='home'>Home</a></div>
     </div>
 </div>

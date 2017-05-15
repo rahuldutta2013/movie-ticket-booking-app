@@ -1,4 +1,4 @@
-mainApp.service('getTicketObj_service', function () {
+mainApp.service('TicketManagerSvc', function () {
     this.ticketObj = {};
     this.setTicketObj = function(noOfTicket,totPrice,SeatObj){
         this.ticketObj.noOfTicket = noOfTicket;

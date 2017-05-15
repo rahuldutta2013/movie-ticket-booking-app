@@ -1,4 +1,4 @@
-mainApp.service('dbManager_service', function () {
+mainApp.service('DbManagerSvc', function () {
     this.storeDataInLocalStorage = function (obj, movieName) {
         var dataStr = JSON.stringify(obj);
         localStorage.setItem(movieName, dataStr);

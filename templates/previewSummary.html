@@ -1,12 +1,20 @@
 <div id='orderSummary'>
     <div class="content">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2>ORDER SUMMARY</h2>
-        <h3>Cine World</h3>
-        <h4>{{movieObj.movieName}}</h4>
-        <p>Tickets: <b>{{ticketObj.noOfTicket}}</b></p>
-        <p>Show Time: <b>{{movieObj.showTime}}</b></p>
-        <article><span>Amount Payable:</span><span><b>{{ticketObj.totPrice|currency}}</b></span></article>
-        <div><a ui-sref='selectSeat'>Cancel</a></div><div><a ui-sref="payment">Proceed</a></div>
+        <h2 class="modal-haeder">
+            <span>ORDER SUMMARY</span>
+            <button type="button" class="close" data-dismiss="modal"><a ui-sref='selectSeat'>&times;</a></button>
+        </h2>
+        <div class="modal-body">
+            <h3>{{movieObj.movie}}</h3>
+            <p class="summary-title">Tickets: <span class="summary-val-color">{{ticketObj.noOfTicket}}</span></p>
+            <p class="summary-title">Show Time: <span class="summary-val-color">{{movieObj.showTime}}</span></p>
+            <article class="summary-title"><span >Amount Payable:</span><span><span class="summary-val-color"> {{ticketObj.totPrice|currency}}</span></article>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-shadow" class="margin-btn" ng-click="changeOverflowScroll()">
+                <a ui-sref='selectSeat'>Cancel</a>
+            </button>
+            <button type="button" class="btn btn-primary btn-shadow"><a ui-sref="payment">Proceed</a></button>
+        </div>
     </div>
 </div>

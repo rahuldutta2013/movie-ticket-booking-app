@@ -14,31 +14,31 @@
   cursor: pointer;
 }
 
-.table a.selected {
-  background: green;
+.table a.isSelected {
+  background: #006699;
   color: white;
   border: 0;
 }
 
-.table a.available {
-  color: green;
-  border: 1px solid green;
+.table a.isAvailable {
+  color: #337ab7;
+  border: 1px solid #006699;
   border-radius: 4px;
 }
 
-.table a.blocked {
+.table a.isBlocked {
   color: grey;
   border: 1px solid grey;
   border-radius: 4px;
 }
 
-.table a.available:hover {
+.table a.isAvailable:hover {
   color: white;
-  background: green;
+  background: #006699;
 }
 
-.table a.blocked,
-.table a.blocked:hover {
+.table a.isBlocked,
+.table a.isBlocked:hover {
   background: #eaeaea;
   color: #aaa;
   box-shadow: 0;

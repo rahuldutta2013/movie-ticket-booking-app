@@ -1,0 +1,65 @@
+<div class="container background">
+  <article>
+    <h2 class="movie-color font-weight">
+      {{movieName}}
+    </h2>
+    <div class="row">
+      <div class="col-sm-2"><span class="detail detail-header-color">Price:</span><span class="detail detail-val-color">{{price|currency}}</span></div>
+      <div class="col-sm-2"><span class="detail detail-header-color">Show Time:</span><span class="detail detail-val-color">{{showTime}}</span></div>
+    </div>
+  </article>
+
+  <section>
+    <div class="row">
+
+      <div class="col-sm-6 padding-top">
+        <div>
+          <p>
+            <span class='detail detail-header-color'>No of Quantity:</span>
+            <span class="detail detail-val-color">{{seatsSelByUser}}</span>
+          </p>
+
+          <select class="form-control width" ng-model="seatsSelByUser" ng-change="changeQty()">
+            <option value="">Seat</option>
+            <option ng-repeat="i in quantities">{{i}}</option>
+          </select>
+        </div>
+        <div ng-show='seatsSelByUser' class="padding-top">
+          <span class='detail detail-header-color'>Total Price:</span>
+          <span class="detail detail-val-color">{{seatsSelByUser*price|currency}}</span>
+        </div>
+        <p ng-show='seatsSelByUser' class="padding-top">
+          <span class='detail detail-header-color'>Seats selected:</span>
+          <span class="detail detail-val-color">{{selectedSeatCount}}</span>
+        </p>
+      </div>
+
+      <div class="col-sm-6">
+
+        <div class="table-responsive">
+          <table class="table">
+            <tbody class="table">
+              <tr ng-repeat="row in rows">
+                <td class="row-color">R{{row[$index].letter}}</td>
+                <span>{{rowLetter[$index]}}</span>
+                <td ng-repeat="item in row">
+                  <a class="available" ng-disabled="isDisabled" ng-class="{'isSelected': item.check == true,
+                  'isAvailable': item.check == false, 'isBlocked': item.seat == true}" ng-click="clickSeat(item)">{{item.val}}
+                    </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="screen">All EYES THIS WAY PLEASE</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <p class="button-margin">
+    <a class='btn btn-primary button-width' ui-sref='.prevSummary' ng-disabled="!proceed" ng-click="overflowHide()">
+      Proceed
+    </a>
+  </p>
+  <div ui-view="selectSeat.prevSummary"></div>
+</div>

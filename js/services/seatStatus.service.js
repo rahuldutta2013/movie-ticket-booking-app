@@ -1,4 +1,4 @@
-mainApp.service('changeSeatStatus_service', function () {
+mainApp.service('SeatStatusSvc', function () {
     this.makeDisable = function (obj) {
         for (var i = 0; i < obj.length; i++) {
             for (var j = 0; j < obj[i].length; j++) {

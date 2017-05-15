@@ -1,4 +1,4 @@
-mainApp.service('loadSeatView_service', function () {
+mainApp.service('SeatSvc', function () {
     return {
         findAvailSeat: function (movieName) {
             const noOfRows = 10,

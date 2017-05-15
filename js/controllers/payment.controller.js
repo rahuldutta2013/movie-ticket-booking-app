@@ -1,4 +1,4 @@
-mainApp.controller('paymentValidateCtrl', function($scope) {
+mainApp.controller('PaymentCtrl', function($scope, ticketDetails) {
     $scope.phone = '1234567890';
     $scope.email = 'abc@xyz.com';
     $scope.cardNumber = '45811223442343434';

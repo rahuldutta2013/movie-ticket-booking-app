@@ -1,72 +1,77 @@
 var mainApp = angular.module("myApp", ["ui.router"]);
 mainApp.config(function ($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state("homePage", {
-    name: 'home',
+  $stateProvider.state("home", {
     url: '/home',
     templateUrl: 'templates/movies.html',
-    controller: 'fetchMoviesCtrl',
+    controller: 'MoviesCtrl',
     resolve: {
-      message: function (dataService) {
+      movieList: function (dataService) {
         return dataService.getData();
       }
     }
   });
 
   $stateProvider.state("selectSeat", {
-    name: 'selectSeat',
     url: '/home/selectSeat/:movie',
-    templateUrl: 'templates/bookTicket.html',
-    controller: 'selectSeat_ctrl',
+    templateUrl: 'templates/selectSeat.html',
+    controller: 'SelectSeatCtrl',
     resolve: {
-      seatData: ['$q', '$http', '$stateParams', 'loadSeatView_service',
-        function ($q, $http, $stateParams, loadSeatView_service) {
-          return loadSeatView_service.findAvailSeat($stateParams.movie);
+      seatData: ['$q', '$http', '$stateParams', 'SeatSvc',
+        function ($q, $http, $stateParams, SeatSvc) {
+          return SeatSvc.findAvailSeat($stateParams.movie);
         }],
-      movieDetail: ['$q', '$http', '$stateParams', function ($q, $http, $stateParams) {
-        var deferred = $q.defer();
-        $http.get('js/movies.json')
-          .then(function (response) {
-            response.data.movies.forEach(function (movieData) {
-              if (movieData.movie === $stateParams.movie) {
-                deferred.resolve(movieData)
-              }
-            })
-          })
-          .catch(function (error) {
-            deferred.reject(error);
-          });
-        return deferred.promise;
-      }]
+       movieDetail: ['$stateParams', 'dataService',
+        function ($stateParams, dataService) {
+          return dataService.getMovieDetails($stateParams.movie);       
+        }]
     }
   });
 
-  $stateProvider.state("payment", {
-    name: 'payment',
-    url: '/home/payment',
-    templateUrl: 'templates/payment.html',
-    controller: 'paymentValidateCtrl'
-  });
-
-  $stateProvider.state("confirmBooking", {
-    name: 'confirmBooking',
-    url: '/home/confirmBooking',
-    templateUrl: 'templates/confirmBooking.html',
-    controller: 'confirmBookingCtrl'
-  });
-
-
   $stateProvider.state('selectSeat.prevSummary', {
-
     views: {
       "selectSeat.prevSummary": {
         name: 'prevSummary',
-        //   url: '/selectSeat/payment',  
         templateUrl: 'templates/previewSummary.html',
-        controller: 'previewOrderSummaryCtrl'
+        controller: 'PreviewSummaryCtrl',
+        resolve: {
+          movieDetail: function (MovieDetailSvc) {
+            return MovieDetailSvc.getMovieObj();
+          },
+          ticketDetails: function (TicketManagerSvc) {
+            return TicketManagerSvc.getTicketObj();
+          }
+        }
       }
     }
   })
+
+  $stateProvider.state("payment", {
+    url: '/home/payment',
+    templateUrl: 'templates/payment.html',
+    controller: 'PaymentCtrl',
+    resolve: {
+      ticketDetails: function (TicketManagerSvc) {
+        return TicketManagerSvc.getTicketObj();
+      }
+    }
+  });
+
+  $stateProvider.state("confirm", {
+    url: '/home/confirm',
+    templateUrl: 'templates/confirm.html',
+    controller: 'ConfirmCtrl',
+    resolve: {
+      movieDetail: function (MovieDetailSvc) {
+        return MovieDetailSvc.getMovieObj();
+      },
+      ticketDetails: function (TicketManagerSvc) {
+        return TicketManagerSvc.getTicketObj();
+      }
+    }
+  });
+
+
 
   $urlRouterProvider.otherwise("/home");
 });
