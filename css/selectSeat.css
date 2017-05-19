@@ -1,0 +1,47 @@
+.table a {
+  text-decoration: none;
+  width: 21px;
+  height: 21px;
+  border-radius: 4px;
+  padding: 6px;
+  line-height: 21px;
+  cursor: default;
+}
+
+.table a:hover,
+.table a:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.table a.isSelected {
+  background: #006699;
+  color: white;
+  border: 0;
+}
+
+.table a.isAvailable {
+  color: #337ab7;
+  border: 1px solid #006699;
+  border-radius: 4px;
+}
+
+.table a.isBlocked {
+  color: grey;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+.table a.isAvailable:hover {
+  color: white;
+  background: #006699;
+}
+
+.table a.isBlocked,
+.table a.isBlocked:hover {
+  background: #eaeaea;
+  color: #aaa;
+  box-shadow: 0;
+  cursor: default;
+  border: 0;
+}

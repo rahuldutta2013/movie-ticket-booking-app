@@ -1,0 +1,28 @@
+<div id='orderSummary'>
+    <div class="content">
+        <h2 class="modal-haeder">
+            <span>ORDER SUMMARY</span>
+            <button type="button" class="close" data-dismiss="modal"><a ui-sref='selectSeat'>&times;</a></button>
+        </h2>
+        <div class="modal-body">
+            <h3>{{movieObj.movie}}</h3>
+            <p class="summary-title">Tickets: <span class="summary-val-color">{{ticketObj.noOfTicket}}</span></p>
+            <p class="summary-title">Show Time: <span class="summary-val-color">{{movieObj.showTime}}</span></p>
+            <article class="summary-title"><span>Amount Payable:</span><span><span class="summary-val-color"> {{ticketObj.totPrice|currency}}</span></article>
+        </div>
+        <div class="modal-footer">
+            <a ui-sref='selectSeat'>
+                <button type="button" class="btn btn-danger btn-shadow" class="margin-btn" ng-click="changeOverflowScroll()">
+                     Cancel
+                </button>
+            </a>
+
+            <a ui-sref="payment({movie:movieObj.movie})">
+                <button type="button" class="btn btn-primary btn-shadow" ng-click="changeOverflowScroll()">
+                     Proceed
+               </button>
+            </a>
+
+        </div>
+    </div>
+</div>
