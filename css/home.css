@@ -69,7 +69,8 @@ padding-right: 1%;
 }
 .button-margin{
     text-align: center;
-    margin-top: 2%;
+    margin-top: 4%;
+    margin-bottom: 2%;
 }
 .button-width{
     width: 30%;
@@ -88,4 +89,7 @@ padding-right: 1%;
 }
 .overflowTrue{
     overflow: auto;
+}
+.selectSeat-button-center{
+    text-align: center;
 }

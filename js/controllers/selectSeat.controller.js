@@ -8,6 +8,7 @@ mainApp.controller('SelectSeatCtrl', ['$scope', '$rootScope',
         $scope.isDisabled = false;
         $scope.rows = seatData;
         $scope.selectedSeatCount = 0;
+        $scope.proceed = false;
         $scope.clickSeat = function (seat) {
             if (!seat.seat && !$scope.isDisabled) {
                 if (seat.check) {
@@ -21,7 +22,6 @@ mainApp.controller('SelectSeatCtrl', ['$scope', '$rootScope',
                     TicketManagerSvc.setTicketObj($scope.seatsSelByUser, totPrice, $scope.rows);
                     if ($scope.selectedSeatCount == $scope.seatsSelByUser) {
                         $scope.proceed = true;
-                        console.log('hello');
                     }
                 }
             }

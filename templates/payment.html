@@ -1,56 +1,94 @@
-<div>
-    <form name="myForm" novalidate>
-        <p>Contact Details</p>
-        <p>Phone:
-            <input type="text" name="phone" ng-model="phone" required>
-            <span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
-<span ng-show="myForm.phone.$error.required">Phone Number is required.</span>
-            </span>
-        </p>
-        <p>Email:
-            <input type="email" name="email" ng-model="email" required>
-            <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
-<span ng-show="myForm.email.$error.required">Email is required.</span>
-            <span ng-show="myForm.email.$error.email">Invalid email address.</span>
-            </span>
-        </p>
+<div class="creditCardForm">
+    <div class="heading">
+        <h1>Confirm Purchase</h1>
+    </div>
+    <div class="payment">
+        <form name="myForm" novalidate>
 
-        <p>Payment</p>
+            <div class="form-group email">
+                <label for="email">Email</label>
+                <input type="email" name="email" ng-model="email" class="form-control" required>
+                <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                     <span ng-show="myForm.email.$error.required">Email is required.</span>
+                     <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                </span>
+            </div>
+            <div class="form-group phone">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" ng-model="phone" required class="form-control" ng-pattern="/^[0-9]{10}$/">
+                <span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+                    <span ng-show="myForm.phone.$error.required">Phone Number is required.</span>
+                    <span ng-show="myForm.phone.$error.pattern">Invalid phone number.</span>
+                </span>
+            </div>
 
-        <p>Card Number:
-            <input type="text" name="cardNumber" ng-model="cardNumber" ng-pattern="/^[0-9]{4}$/" required>
-            <span style="color:red" ng-show="myForm.cardNumber.$dirty && myForm.cardNumber.$invalid">
-                <span ng-show="myForm.cardNumber.$error.required">Card-Number Number is required.</span>
-                <span ng-show="myForm.cardNumber.$error.pattern">Invalid card number</span>
-            </span>
-        </p>
-
-        <p>Expiry:
-            <input type="text" name="ExpiryMonth" ng-model="month" ng-pattern="/^(1[0-2]|[1-9])$/" required>
-
-            <span style="color:red" ng-show="myForm.ExpiryMonth.$dirty && myForm.ExpiryMonth.$invalid">
-                Expiry Date is required.</span>
-             <span style="color:red" ng-show="myForm.ExpiryMonth.$error.pattern">Valid year Number is required.</span>
-
-            <input type="text" name="ExpiryYear" ng-model="year" ng-pattern="/^(1[0-2]|[1-9])$/" required>
-
-            <span style="color:red" ng-show="myForm.ExpiryYear.$dirty && myForm.ExpiryYear.$invalid">required</span>
-            <span ng-show="myForm.ExpiryYear.$error.pattern || myForm.ExpiryYear.$error.pattern"> 
-                Valid Card-Number Number is required.</span>
-        
-        </p>
-
-        <p>Cvv:
-            <input type="text" name="cvv" ng-model="cvv" required>
-            <span style="color:red" ng-show="myForm.cvv.$dirty && myForm.cvv.$invalid">
-<span ng-show="myForm.cvv.$error.required">Cvv Number is required.</span>
-            </span>
-        </p>
-
-        <p>   
-            <a ui-sref='confirm' ng-hide="myForm.$invalid">Confirm Booking</a> 
-<!--<input type="submit" ng-disabled="myForm.$invalid">-->
-        </p>
-
-    </form>
+            <div class="form-group owner">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control" name="owner" ng-model="owner" required>
+                 <span style="color:red" ng-show="myForm.owner.$dirty">
+                     <span ng-show="myForm.owner.$error.required">Phone Number is required.</span>
+                 </span>
+            </div>
+            <div class="form-group CVV">
+                <label for="cvv">CVV</label>
+                <input type="text" name="cvv" ng-model="cvv" class="form-control" ng-pattern="/^[0-9]{3}$/" required>
+                <span style="color:red" ng-show="myForm.cvv.$dirty && myForm.cvv.$invalid">
+                    <span ng-show="myForm.cvv.$error.required">CVV Number is required</span>
+                    <span ng-show="myForm.cvv.$error.pattern">Invalid CVV number</span>
+                </span>
+            </div>
+            <div class="form-group" id="card-number-field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" class="form-control" name="cardNumber" ng-model="cardNumber" ng-pattern="/^[0-9]{4}$/" required>
+                <span style="color:red" ng-show="myForm.cardNumber.$dirty && myForm.cardNumber.$invalid">
+                    <span ng-show="myForm.cardNumber.$error.required">Card number Number is required</span>
+                    <span ng-show="myForm.cardNumber.$error.pattern">Invalid card number</span>
+                </span>
+            </div>
+            <div class="form-group" id="expiration-date">
+                <label>Expiration Date</label>
+                <select name="expiryMonth" ng-model="expiryMonth" required>
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <span style="color:red" ng-show="myForm.expiryMonth.$dirty">
+                    <span ng-show="myForm.expiryMonth.$error.required">Expiry date is required</span>
+                </span>
+                <select name="expiryYear" ng-model="expiryYear" required>
+                    <option value="16"> 2016</option>
+                    <option value="17"> 2017</option>
+                    <option value="18"> 2018</option>
+                    <option value="19"> 2019</option>
+                    <option value="20"> 2020</option>
+                    <option value="21"> 2021</option>
+                </select>
+                <span style="color:red" ng-show="myForm.expiryYear.$dirty">
+                    <span ng-show="myForm.expiryYear.$error.required">Expiry date is required</span>
+                </span>
+            </div>
+            <div class="form-group" id="credit_cards">
+                <img src="image/visa-eps-vector-logo-400x400.png" id="visa" class="credit-card-height">
+                <img src="image/mastercard_256.png" id="mastercard" class="credit-card-height">
+                <img src="image/American-Express-icon.png" id="amex" class="credit-card-height">
+            </div>
+            <div class="form-group amount-style">
+                <div><span class="amount-style-font">Total Amount:</span><span class="amount-style-val">{{totalPrice|currency}}</span></div>
+            </div>
+            <div class="form-group" id="pay-now">
+                <a ui-sref='confirm' ng-class="{'button-dispaly-none':myForm.$invalid,'button-dispaly-visible':!myForm.$invalid}">
+                    <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm Payment</button>
+                </a>             
+            </div>
+        </form>
+    </div>
 </div>

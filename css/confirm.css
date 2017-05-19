@@ -1,0 +1,21 @@
+.confirm-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-height: 40%;
+    /* max-height: 48%; */
+    width: 50%;
+    margin-top: -12%;
+    margin-left: -25%;
+    border: 1px solid #999999;
+    border-radius: 2%;
+    padding: 1% 2%;
+}
+@media(max-width: 768px) {
+    .confirm-content {
+        width: 80%;
+        margin-left: -40%;
+        margin-top: -10%;
+    }
+   
+}

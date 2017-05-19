@@ -47,13 +47,17 @@ mainApp.config(function ($stateProvider, $urlRouterProvider) {
   })
 
   $stateProvider.state("payment", {
-    url: '/home/payment',
+    url: '/home/selectSeat/:movie/payment',
     templateUrl: 'templates/payment.html',
     controller: 'PaymentCtrl',
     resolve: {
       ticketDetails: function (TicketManagerSvc) {
         return TicketManagerSvc.getTicketObj();
-      }
+      },
+       movieDetail: ['$stateParams', 'dataService',
+        function ($stateParams, dataService) {
+          return dataService.getMovieDetails($stateParams.movie);       
+        }]
     }
   });
 

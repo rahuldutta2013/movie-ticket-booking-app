@@ -1,10 +1,8 @@
 mainApp.controller('ConfirmCtrl',
-    function ($scope,$state, ticketDetails, SeatStatusSvc, DbManagerSvc, movieDetail) {
+    function ($scope,ticketDetails, SeatStatusSvc, DbManagerSvc, movieDetail) {
         'ngInject';
 
         $scope.ticketData = ticketDetails;
-        console.log($scope.ticketData);
-
         $scope.movieObj = movieDetail;
         var movieName = $scope.movieObj.movieName;
 
